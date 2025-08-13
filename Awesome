@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NEET Recall</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#111">
+</head>
+<body>
+<header>
+  <h1>NEET Recall</h1>
+  <button id="exportBtn" title="Export deck">Export</button>
+  <label class="file">
+    <input type="file" id="importInput" accept="application/json">Import
+  </label>
+</header>
+
+<main>
+  <section id="addCard">
+    <h2>Add Card</h2>
+    <textarea id="q" placeholder="Question (e.g., 'Beta-oxidation occurs where?')"></textarea>
+    <textarea id="a" placeholder="Answer (e.g., 'Mitochondrial matrix (mostly)')"></textarea>
+    <button id="addBtn">Add</button>
+  </section>
+
+  <section id="study">
+    <h2>Study</h2>
+    <div id="card" class="card hidden">
+      <div id="cardFront"></div>
+      <div id="cardBack" class="hidden"></div>
+      <button id="revealBtn">Reveal</button>
+      <div id="gradeRow" class="hidden">
+        <button data-grade="0">Again</button>
+        <button data-grade="3">Hard</button>
+        <button data-grade="4">Good</button>
+        <button data-grade="5">Easy</button>
+      </div>
+    </div>
+    <div id="emptyMessage">No due cards. Add some or come back later.</div>
+  </section>
+
+  <section id="list">
+    <h2>All Cards</h2>
+    <ul id="cardsUl"></ul>
+  </section>
+</main>
+
+<footer>
+  <span id="stats"></span>
+</footer>
+
+<script src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
+</body>
+</html>
